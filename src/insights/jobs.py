@@ -2,6 +2,12 @@ from functools import lru_cache
 from typing import List, Dict
 import csv
 
+# Referências:
+# - Documentação: https://docs.python.org/3/library/
+# - Repositórios das aulas 1, 2 3 da seção 1 do módulo de CS
+# - Course da Trybe: dias 1, 2 3 da seção 1 do módulo de CS
+# - Site W3 schools: https://www.w3schools.com/python/
+
 
 @lru_cache
 def read(path: str) -> List[Dict]:
@@ -67,13 +73,14 @@ def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
     list
         List of jobs with provided job_type
     """
-    raise NotImplementedError
+    filtered_jobs = [job for job in jobs if job["job_type"] == job_type]
+    return filtered_jobs
 
 
 if __name__ == "__main__":
-    content = read("data/jobs.csv")
-    print(content[0])
+    jobs = read("data/jobs.csv")
+    print(jobs[0])
     job_types = get_unique_job_types("data/jobs.csv")
     print(job_types)
-    print(type(job_types))
-    print(type(content))
+    filtered_jobs = filter_by_job_type(jobs, "full")
+    print(filtered_jobs)
