@@ -46,6 +46,10 @@ def get_unique_job_types(path: str) -> List[str]:
     list
         List of unique job types
     """
+    job_types = set()
+    [job_types.add(job["job_type"]) for job in read(path)]
+    ordered_job_types = sorted(list(job_types))
+    return ordered_job_types
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
@@ -68,4 +72,8 @@ def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
 
 if __name__ == "__main__":
     content = read("data/jobs.csv")
-    print(content)
+    print(content[0])
+    job_types = get_unique_job_types("data/jobs.csv")
+    print(job_types)
+    print(type(job_types))
+    print(type(content))
