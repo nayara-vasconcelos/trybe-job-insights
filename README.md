@@ -71,4 +71,4 @@ deactivate
 
 <br><br>
 
-*#OOP #DesignPatterns #Python*
+*#Python*
